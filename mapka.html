@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6ebdae0ab7bbff418f52e4bd629e24ef {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6ebdae0ab7bbff418f52e4bd629e24ef" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6ebdae0ab7bbff418f52e4bd629e24ef = L.map(
+                "map_6ebdae0ab7bbff418f52e4bd629e24ef",
+                {
+                    center: [52.3, 21.8],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4b2ffa13720e92ab2d5449dce414f9fe = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_4b2ffa13720e92ab2d5449dce414f9fe.addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+            var marker_1b45de9c9ec0038bf798d874e5c7b7b3 = L.marker(
+                [52.232222, 21.008333],
+                {}
+            ).addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+        var popup_212d478b11ba8f05ebec44414332f990 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_250bed8da9358929e81368e664f7f8d5 = $(`<div id="html_250bed8da9358929e81368e664f7f8d5" style="width: 100.0%; height: 100.0%;">Oddział: S2 Warszawa</div>`)[0];
+                popup_212d478b11ba8f05ebec44414332f990.setContent(html_250bed8da9358929e81368e664f7f8d5);
+            
+        
+
+        marker_1b45de9c9ec0038bf798d874e5c7b7b3.bindPopup(popup_212d478b11ba8f05ebec44414332f990)
+        ;
+
+        
+    
+    
+            tile_layer_4b2ffa13720e92ab2d5449dce414f9fe.addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+            var marker_e323ba298e8906ff09de2be6f6a80f68 = L.marker(
+                [50.061389, 19.938333],
+                {}
+            ).addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+        var popup_248f3656a8dc9697c2ca654ec636724e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_716bcf0e2873a7addf66b95d5fe69494 = $(`<div id="html_716bcf0e2873a7addf66b95d5fe69494" style="width: 100.0%; height: 100.0%;">Oddział: S3 Kraków</div>`)[0];
+                popup_248f3656a8dc9697c2ca654ec636724e.setContent(html_716bcf0e2873a7addf66b95d5fe69494);
+            
+        
+
+        marker_e323ba298e8906ff09de2be6f6a80f68.bindPopup(popup_248f3656a8dc9697c2ca654ec636724e)
+        ;
+
+        
+    
+    
+            tile_layer_4b2ffa13720e92ab2d5449dce414f9fe.addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+            var marker_97d48a12cdddacbba2505849c35055c3 = L.marker(
+                [50.720556, 23.258611],
+                {}
+            ).addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+        var popup_8414cd80724f318b0f0f17cc5d057651 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5f7a9fe5bbf83ad7ae1878248cffe39 = $(`<div id="html_c5f7a9fe5bbf83ad7ae1878248cffe39" style="width: 100.0%; height: 100.0%;">Oddział: S7 Zamość</div>`)[0];
+                popup_8414cd80724f318b0f0f17cc5d057651.setContent(html_c5f7a9fe5bbf83ad7ae1878248cffe39);
+            
+        
+
+        marker_97d48a12cdddacbba2505849c35055c3.bindPopup(popup_8414cd80724f318b0f0f17cc5d057651)
+        ;
+
+        
+    
+    
+            tile_layer_4b2ffa13720e92ab2d5449dce414f9fe.addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+            var marker_023534d564cd34b11922c90e6e4f65fb = L.marker(
+                [52.232222, 21.008333],
+                {}
+            ).addTo(map_6ebdae0ab7bbff418f52e4bd629e24ef);
+        
+    
+        var popup_7065f20671ef16798eff7011b8c49efe = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d431238ece6fee359c6c1da188913121 = $(`<div id="html_d431238ece6fee359c6c1da188913121" style="width: 100.0%; height: 100.0%;">Oddział: S2 Warszawa</div>`)[0];
+                popup_7065f20671ef16798eff7011b8c49efe.setContent(html_d431238ece6fee359c6c1da188913121);
+            
+        
+
+        marker_023534d564cd34b11922c90e6e4f65fb.bindPopup(popup_7065f20671ef16798eff7011b8c49efe)
+        ;
+
+        
+    
+</script>
+</html>

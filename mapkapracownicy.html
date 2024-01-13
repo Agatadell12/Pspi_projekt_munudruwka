@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ea23646a2f5693dc29ce79dd6e2e8db1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ea23646a2f5693dc29ce79dd6e2e8db1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ea23646a2f5693dc29ce79dd6e2e8db1 = L.map(
+                "map_ea23646a2f5693dc29ce79dd6e2e8db1",
+                {
+                    center: [52.3, 21.8],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a692e9a0111e72b17fad27d2560b3606 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_a692e9a0111e72b17fad27d2560b3606.addTo(map_ea23646a2f5693dc29ce79dd6e2e8db1);
+        
+    
+            var marker_b490d915e4f03c93aa9767accfa581ae = L.marker(
+                [51.416389, 21.969167],
+                {}
+            ).addTo(map_ea23646a2f5693dc29ce79dd6e2e8db1);
+        
+    
+        var popup_dd14d293bf8d37f3b8dc87c11510e111 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_87384c3ffb73ff73d5e3e485a41c323a = $(`<div id="html_87384c3ffb73ff73d5e3e485a41c323a" style="width: 100.0%; height: 100.0%;">Pracownik: Diana Kot mieszka w Puławy</div>`)[0];
+                popup_dd14d293bf8d37f3b8dc87c11510e111.setContent(html_87384c3ffb73ff73d5e3e485a41c323a);
+            
+        
+
+        marker_b490d915e4f03c93aa9767accfa581ae.bindPopup(popup_dd14d293bf8d37f3b8dc87c11510e111)
+        ;
+
+        
+    
+    
+            var marker_55a0a594de892e69394cdd4d0c44e3f3 = L.marker(
+                [51.585556, 21.551111],
+                {}
+            ).addTo(map_ea23646a2f5693dc29ce79dd6e2e8db1);
+        
+    
+        var popup_ae836fba67e36dc7129ddd849f9603ef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2112cb7e9d81e9701f15a407085eaf1f = $(`<div id="html_2112cb7e9d81e9701f15a407085eaf1f" style="width: 100.0%; height: 100.0%;">Pracownik: Katarzyna Król mieszka w Kozienice</div>`)[0];
+                popup_ae836fba67e36dc7129ddd849f9603ef.setContent(html_2112cb7e9d81e9701f15a407085eaf1f);
+            
+        
+
+        marker_55a0a594de892e69394cdd4d0c44e3f3.bindPopup(popup_ae836fba67e36dc7129ddd849f9603ef)
+        ;
+
+        
+    
+    
+            var marker_8ceafde10aaea79f7c3783ad17cbdd95 = L.marker(
+                [52.106111, 21.265833],
+                {}
+            ).addTo(map_ea23646a2f5693dc29ce79dd6e2e8db1);
+        
+    
+        var popup_d9f784c2525fcf48bff4b04c53182f98 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a97f8109c9f53d6e97702baf35a15b4 = $(`<div id="html_7a97f8109c9f53d6e97702baf35a15b4" style="width: 100.0%; height: 100.0%;">Pracownik: Ada Miazga mieszka w Otwock</div>`)[0];
+                popup_d9f784c2525fcf48bff4b04c53182f98.setContent(html_7a97f8109c9f53d6e97702baf35a15b4);
+            
+        
+
+        marker_8ceafde10aaea79f7c3783ad17cbdd95.bindPopup(popup_d9f784c2525fcf48bff4b04c53182f98)
+        ;
+
+        
+    
+    
+            var marker_aa0db57ff568305bf3af79169ba124d3 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_ea23646a2f5693dc29ce79dd6e2e8db1);
+        
+    
+        var popup_e6e28694d963121df2f0f9f20d5faf42 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_312dc37fcf080e9c7592ab65b26f6ef9 = $(`<div id="html_312dc37fcf080e9c7592ab65b26f6ef9" style="width: 100.0%; height: 100.0%;">Pracownik: Paweł Piętka mieszka w Kozia wólka</div>`)[0];
+                popup_e6e28694d963121df2f0f9f20d5faf42.setContent(html_312dc37fcf080e9c7592ab65b26f6ef9);
+            
+        
+
+        marker_aa0db57ff568305bf3af79169ba124d3.bindPopup(popup_e6e28694d963121df2f0f9f20d5faf42)
+        ;
+
+        
+    
+</script>
+</html>
