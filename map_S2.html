@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_59ebed0869870512f729a06098e51838 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_59ebed0869870512f729a06098e51838" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_59ebed0869870512f729a06098e51838 = L.map(
+                "map_59ebed0869870512f729a06098e51838",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f35a637e0536a339865bee107ba100f3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_f35a637e0536a339865bee107ba100f3.addTo(map_59ebed0869870512f729a06098e51838);
+        
+    
+            var marker_5d46aad3b7c0ec63cacb30ed36c6778d = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_59ebed0869870512f729a06098e51838);
+        
+    
+        var popup_270b6eb43d662596a09b5fee2b5f232e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fac3657c79d7433b45fb69e0b3078fea = $(`<div id="html_fac3657c79d7433b45fb69e0b3078fea" style="width: 100.0%; height: 100.0%;">Pracownik: Miazga Otwock Oddział: S2 Liczba postów: Kasjer</div>`)[0];
+                popup_270b6eb43d662596a09b5fee2b5f232e.setContent(html_fac3657c79d7433b45fb69e0b3078fea);
+            
+        
+
+        marker_5d46aad3b7c0ec63cacb30ed36c6778d.bindPopup(popup_270b6eb43d662596a09b5fee2b5f232e)
+        ;
+
+        
+    
+    
+            var marker_a7bb7fdde3e196b8d322393306b80ea6 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_59ebed0869870512f729a06098e51838);
+        
+    
+        var popup_ca3f97778e007fb7fbc9ce18386dec2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_67f4de722af2710cd531a83c4d8fe3b1 = $(`<div id="html_67f4de722af2710cd531a83c4d8fe3b1" style="width: 100.0%; height: 100.0%;">Pracownik: Miazga Otwock Oddział: S2 Liczba postów: Kasjer</div>`)[0];
+                popup_ca3f97778e007fb7fbc9ce18386dec2a.setContent(html_67f4de722af2710cd531a83c4d8fe3b1);
+            
+        
+
+        marker_a7bb7fdde3e196b8d322393306b80ea6.bindPopup(popup_ca3f97778e007fb7fbc9ce18386dec2a)
+        ;
+
+        
+    
+</script>
+</html>

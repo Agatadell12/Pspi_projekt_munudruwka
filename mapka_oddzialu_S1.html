@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a7e1918866acb3dce0514f628d244b0a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a7e1918866acb3dce0514f628d244b0a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a7e1918866acb3dce0514f628d244b0a = L.map(
+                "map_a7e1918866acb3dce0514f628d244b0a",
+                {
+                    center: [52.3, 21.8],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b0639053ffc76f3cef3e7fa1501b2960 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_b0639053ffc76f3cef3e7fa1501b2960.addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+            var marker_e7fef5aaf5e5fa605227bc4b11f8f24c = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+        var popup_99c118f9029fb90a8dc51352d6b6572c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_86a78372658679e1b20293f5058689ef = $(`<div id="html_86a78372658679e1b20293f5058689ef" style="width: 100.0%; height: 100.0%;">ID: 1 Imię: mjr Nazwisko: Agnieszka City: KACZOR Stanowisko Pracy: S1 Oddział: Warszawa</div>`)[0];
+                popup_99c118f9029fb90a8dc51352d6b6572c.setContent(html_86a78372658679e1b20293f5058689ef);
+            
+        
+
+        marker_e7fef5aaf5e5fa605227bc4b11f8f24c.bindPopup(popup_99c118f9029fb90a8dc51352d6b6572c)
+        ;
+
+        
+    
+    
+            var marker_5aeda61189fa42211150fe38fe9bc2e4 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+        var popup_69f19d2299643d22567ece1b444946b3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0abfb150e894848159a43d087f15fbeb = $(`<div id="html_0abfb150e894848159a43d087f15fbeb" style="width: 100.0%; height: 100.0%;">ID: 2 Imię: ppłk Nazwisko: Dawid City: ZAJĄC Stanowisko Pracy: S1 Oddział: Dęblin</div>`)[0];
+                popup_69f19d2299643d22567ece1b444946b3.setContent(html_0abfb150e894848159a43d087f15fbeb);
+            
+        
+
+        marker_5aeda61189fa42211150fe38fe9bc2e4.bindPopup(popup_69f19d2299643d22567ece1b444946b3)
+        ;
+
+        
+    
+    
+            var marker_003b7075e92f670b3cc90078f24a9300 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+        var popup_29cb034b5c32a8ae409c78f053ece29a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4052d2aea07c2411a94dd6fc3a976f99 = $(`<div id="html_4052d2aea07c2411a94dd6fc3a976f99" style="width: 100.0%; height: 100.0%;">ID: 3 Imię: płk Nazwisko: Hubert City: KOŃ Stanowisko Pracy: S1 Oddział: Komorowo</div>`)[0];
+                popup_29cb034b5c32a8ae409c78f053ece29a.setContent(html_4052d2aea07c2411a94dd6fc3a976f99);
+            
+        
+
+        marker_003b7075e92f670b3cc90078f24a9300.bindPopup(popup_29cb034b5c32a8ae409c78f053ece29a)
+        ;
+
+        
+    
+    
+            var marker_c47e106f103312e6614622a452729288 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+        var popup_8a97d522ca5a6f6172f0615a3ac3ce89 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fbb89274ca3238c165f22a9e7ec0dec5 = $(`<div id="html_fbb89274ca3238c165f22a9e7ec0dec5" style="width: 100.0%; height: 100.0%;">ID: 4 Imię: kpr Nazwisko: Adrianna City: ŻMIJA Stanowisko Pracy: S1 Oddział: Komorowo</div>`)[0];
+                popup_8a97d522ca5a6f6172f0615a3ac3ce89.setContent(html_fbb89274ca3238c165f22a9e7ec0dec5);
+            
+        
+
+        marker_c47e106f103312e6614622a452729288.bindPopup(popup_8a97d522ca5a6f6172f0615a3ac3ce89)
+        ;
+
+        
+    
+    
+            var marker_442ccb697fc9f1c95ad8af5dab14fc0c = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_a7e1918866acb3dce0514f628d244b0a);
+        
+    
+        var popup_da36951335b340d6963b59e75fbda4a4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_36513f3853dbfe382639ab8b79d2ada4 = $(`<div id="html_36513f3853dbfe382639ab8b79d2ada4" style="width: 100.0%; height: 100.0%;">ID: 5 Imię: gen Nazwisko: Kacper City: DUSICIEL Stanowisko Pracy: S1 Oddział: Konin</div>`)[0];
+                popup_da36951335b340d6963b59e75fbda4a4.setContent(html_36513f3853dbfe382639ab8b79d2ada4);
+            
+        
+
+        marker_442ccb697fc9f1c95ad8af5dab14fc0c.bindPopup(popup_da36951335b340d6963b59e75fbda4a4)
+        ;
+
+        
+    
+</script>
+</html>
