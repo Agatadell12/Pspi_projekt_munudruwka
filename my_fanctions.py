@@ -260,67 +260,45 @@ def get_map_of_workers(db_params) -> None:
 
 #Funkcje do wyszukiwania,dodawania,aktualizowania,usuwania żolnierzy którzy pobrali sorty mundurowe ze wszytkich oddziałów
 ###wyświetlanie dodanie, usuwanie, aktualizacja listy pracowników wybranego oddziału (musi mieć współrzędne)
+
 #------Generowanie mapy pracowników wybranego oddziału-------
 
-
-def get_map_for_department(db_params) -> None:
+def get_map_of_workers_from(db_params, selected_department: str) -> None:
     cursor = db_params.cursor()
-    department = input('Wpisz oddział: ')
 
-    # Create an SQL query to retrieve employees in the specified department with their respective cities
-    sql_query = sql_query = f"SELECT p.*, o.city FROM pracownicy p " \
-                            f"JOIN oddzialy o ON p.oddzial = o.nazwa " \
-                            f"WHERE o.nazwa = '{department}';"
+    # Pobierz id, nazwę miasta i miasto dla wybranego oddziału
+    sql_query_1 = f"SELECT id, nazwa, city FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_query_1, (selected_department,))
+    department_result = cursor.fetchone()
 
-    cursor.execute(sql_query)
-    query_result = cursor.fetchall()
+    if department_result:
+        id, nazwa, city = department_result
 
-    # Check if there are any results from the database query
-    if query_result:
-        # Create an empty list to store unique cities for employees
-        unique_cities = set()
-
-        # Create a folium map with a default location (center of the first result)
+        # Utwórz mapę z danymi oddziału
         map = folium.Map(
-            location=[0, 0],  # Default location, will be updated later
+            location=get_coordinate_of(city),
             tiles='OpenStreetMap',
             zoom_start=14
         )
 
-        # Add markers to the map for each employee in the query result
-        for employee in query_result:
-            # Extract employee city
-            employee_city = employee[5]  # Assuming column 7 is the city column
+        # Pobierz pracowników dla danego oddziału
+        sql_query_2 = f"SELECT * FROM public.pracownicy WHERE oddzial = %s;"
+        cursor.execute(sql_query_2, (nazwa,))
+        query_result = cursor.fetchall()
 
-            # Geocode the city to obtain coordinates
-            employee_coordinates = get_coordinate_of(employee_city)
-
-            # Update the map's location based on the first result
-            if map.location == [0, 0]:
-                map.location = employee_coordinates
-
-            # Add a marker for each employee
+        # Dodaj znaczniki pracowników do mapy
+        for user in query_result:
+            city = user[3]
             folium.Marker(
-                location=employee_coordinates,
-                popup=f'Pracownik: {employee[2]} {employee[3]}\n'
-                      f'Oddział: {department}\n'
-                      f'Liczba postów: {employee[4]}'
+                location=get_coordinate_of(city),
+                popup=f'Pracownik: {user[1]} {user[2]}\n'
+                      f'mieszka w {user[3]}'
             ).add_to(map)
 
-            # Add the employee's city to the unique_cities set
-            unique_cities.add(employee_city)
-
-        # Save the generated map to an HTML file with a name based on the department
-        map.save(f'map_{department}.html')
-
-        # Print the unique cities found for the employees in the department
-        print(f'Unikalne miasta pracowników w oddziale {department}: {", ".join(unique_cities)}')
-
+        # Zapisz mapę do pliku HTML
+        map.save(f'Mapa_{nazwa}_pracownicy.html')
     else:
-        # If there are no results, print a message indicating that no map can be created
-        print(f'Brak wyników zapytania dla oddziału {department}. Nie można utworzyć mapy.')
-
-
+        print(f"Nie znaleziono oddziału o nazwie {selected_department}.")
 
 #Funkcje do wyszukiwania,dodawania,aktualizowania,usuwania żolnierzy którzy pobrali sorty mundurowe ze wszytkich oddziałów
 
@@ -487,7 +465,8 @@ def gui(db_params) -> None:
                 get_map_of_workers(db_params)
             case '14':
                 print('Wygeneruj mapę wszystkich pracowników z wybranego oddziału')
-                get_map_for_department(db_params)
+                selected_department = input("Podaj nazwę oddziału: ")
+                get_map_of_workers_from(db_params, selected_department)
             case '15':
                 print('Kończę pracę')
                 break
