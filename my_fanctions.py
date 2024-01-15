@@ -259,10 +259,196 @@ def get_map_of_workers(db_params) -> None:
     cursor.close()
 
 #Funkcje do wyszukiwania,dodawania,aktualizowania,usuwania żolnierzy którzy pobrali sorty mundurowe ze wszytkich oddziałów
+def add_soliders_to_unit(db_params) -> None:
+    """
+    Dodaj żołnierzy do wybranego oddziału.
+    """
+    # Utwórz kursor w oparciu o db_params (uzyskasz dostęp do zmiennej globalnej)
+    cursor = db_params.cursor()
+
+    # Pobierz nazwę oddziału od użytkownika
+    nazwa_oddzialu = input('Podaj nazwę oddziału, do którego chcesz dodać żołnierza: ')
+
+    # Sprawdź, czy oddział istnieje
+    sql_check_unit = f"SELECT * FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_check_unit, (nazwa_oddzialu,))
+    unit_exists = cursor.fetchone()
+
+    if unit_exists:
+        # Pobierz dane pracownika od użytkownika
+        imie = input('Podaj imię pracownika: ')
+        nazwisko = input('Podaj nazwisko pracownika: ')
+        city_pracownika = input('Podaj miasto pracownika: ')
+        stanowisko_pracy = input('Podaj stanowisko pracy pracownika: ')
+
+        # Wykonaj zapytanie SQL, aby dodać pracownika do wybranego oddziału
+        sql_query = f"INSERT INTO public.pracownicy(imie, nazwisko, city, stanowiskopracy, oddzial) VALUES (%s, %s, %s, %s, %s);"
+        cursor.execute(sql_query, (imie, nazwisko, city_pracownika, stanowisko_pracy, nazwa_oddzialu))
+
+        # Zatwierdź zmiany
+        db_params.commit()
+        print(f'Dodano pracownika do oddziału {nazwa_oddzialu}.')
+    else:
+        print(f"Oddział o nazwie {nazwa_oddzialu} nie istnieje.")
+
+    # Zamknij kursor po użyciu
+    cursor.close()
 ###wyświetlanie dodanie, usuwanie, aktualizacja listy pracowników wybranego oddziału (musi mieć współrzędne)
 
-#------Generowanie mapy pracowników wybranego oddziału-------
+def add_workers_to_unit(db_params) -> None:
+    """
+    Dodaj pracowników do wybranego oddziału.
+    """
+    # Utwórz kursor w oparciu o db_params (uzyskasz dostęp do zmiennej globalnej)
+    cursor = db_params.cursor()
 
+    # Pobierz nazwę oddziału od użytkownika
+    nazwa_oddzialu = input('Podaj nazwę oddziału, do którego chcesz dodać pracowników: ')
+
+    # Sprawdź, czy oddział istnieje
+    sql_check_unit = f"SELECT * FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_check_unit, (nazwa_oddzialu,))
+    unit_exists = cursor.fetchone()
+
+    if unit_exists:
+        # Pobierz dane pracownika od użytkownika
+        imie = input('Podaj imię pracownika: ')
+        nazwisko = input('Podaj nazwisko pracownika: ')
+        city_pracownika = input('Podaj miasto pracownika: ')
+        stanowisko_pracy = input('Podaj stanowisko pracy pracownika: ')
+
+        # Wykonaj zapytanie SQL, aby dodać pracownika do wybranego oddziału
+        sql_query = f"INSERT INTO public.pracownicy(imie, nazwisko, city, stanowiskopracy, oddzial) VALUES (%s, %s, %s, %s, %s);"
+        cursor.execute(sql_query, (imie, nazwisko, city_pracownika, stanowisko_pracy, nazwa_oddzialu))
+
+        # Zatwierdź zmiany
+        db_params.commit()
+        print(f'Dodano pracownika do oddziału {nazwa_oddzialu}.')
+    else:
+        print(f"Oddział o nazwie {nazwa_oddzialu} nie istnieje.")
+
+    # Zamknij kursor po użyciu
+    cursor.close()
+def show_workers_in_selected_unit(db_params) -> None:
+    """
+    Wyświetl pracowników w wybranym oddziale.
+    """
+    # Utwórz kursor w oparciu o db_params
+    cursor = db_params.cursor()
+
+    # Pobierz nazwę oddziału od użytkownika
+    nazwa_oddzialu = input('Podaj nazwę oddziału, dla którego chcesz wyświetlić pracowników: ')
+
+    # Sprawdź, czy oddział istnieje
+    sql_check_unit = f"SELECT * FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_check_unit, (nazwa_oddzialu,))
+    unit_exists = cursor.fetchone()
+
+    if unit_exists:
+        # Wykonaj zapytanie SQL, aby wyświetlić pracowników wybranego oddziału
+        sql_query = f"SELECT imie, nazwisko, city, stanowiskopracy FROM public.pracownicy WHERE oddzial = %s;"
+        cursor.execute(sql_query, (nazwa_oddzialu,))
+        query_result = cursor.fetchall()
+
+        print(f"Pracownicy w oddziale {nazwa_oddzialu}:")
+        for row in query_result:
+            print(f'{row[0]} {row[1]} z miejscowości {row[2]} pracujący na stanowisku {row[3]}')
+
+    else:
+        print(f"Oddział o nazwie {nazwa_oddzialu} nie istnieje.")
+
+    # Zamknij kursor po użyciu
+    cursor.close()
+
+def remove_unit_and_workers(db_params) -> None:
+    """
+    Usuń oddział i jego pracowników.
+    """
+    cursor = db_params.cursor()
+
+    # Pobierz nazwę oddziału od użytkownika
+    nazwa_oddzialu = input('Podaj nazwę oddziału do usunięcia:')
+
+    # Sprawdź, czy oddział istnieje
+    sql_check_unit = f"SELECT * FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_check_unit, (nazwa_oddzialu,))
+    unit_exists = cursor.fetchone()
+
+    if unit_exists:
+        print('Czy na pewno chcesz usunąć ten oddział wraz z pracownikami?')
+        confirmation = input('Wpisz "tak", aby potwierdzić: ')
+
+        if confirmation.lower() == 'tak':
+            # Usuń pracowników przypisanych do tego oddziału
+            sql_remove_workers = f"DELETE FROM public.pracownicy WHERE oddzial = %s;"
+            cursor.execute(sql_remove_workers, (nazwa_oddzialu,))
+
+            # Usuń sam oddział
+            sql_remove_unit = f"DELETE FROM public.oddzialy WHERE nazwa = %s;"
+            cursor.execute(sql_remove_unit, (nazwa_oddzialu,))
+
+            db_params.commit()
+            print(f'Usunięto oddział {nazwa_oddzialu} wraz z pracownikami.')
+        else:
+            print('Anulowano usuwanie oddziału.')
+    else:
+        print(f"Oddział o nazwie {nazwa_oddzialu} nie istnieje.")
+
+    # Zamknij kursor po użyciu
+    cursor.close()
+def update_selected_worker_in_unit(db_params) -> None:
+    cursor = db_params.cursor()
+
+    # Pobierz nazwę oddziału od użytkownika
+    nazwa_oddzialu = input("Podaj nazwę oddziału, dla którego chcesz zaktualizować pracowników:")
+
+    # Sprawdź, czy oddział istnieje
+    sql_check_unit = f"SELECT * FROM public.oddzialy WHERE nazwa = %s;"
+    cursor.execute(sql_check_unit, (nazwa_oddzialu,))
+    unit_exists = cursor.fetchone()
+
+    if unit_exists:
+        print('Znaleziono oddział.')
+
+        # Wyświetl pracowników pracujących w danym oddziale
+        sql_show_workers = f"SELECT * FROM public.pracownicy WHERE oddzial = %s;"
+        cursor.execute(sql_show_workers, (nazwa_oddzialu,))
+        workers_in_unit = cursor.fetchall()
+
+        if not workers_in_unit:
+            print(f'Brak pracowników w oddziale {nazwa_oddzialu}.')
+        else:
+            print(f'Pracownicy w oddziale {nazwa_oddzialu}:')
+            for worker in workers_in_unit:
+                print(f'{worker[1]} {worker[2]}, Stanowisko: {worker[4]}')
+
+            # Pobierz ID pracownika do aktualizacji od użytkownika
+            id_pracownika_do_aktualizacji = int(input('Podaj ID pracownika do aktualizacji: '))
+
+            # Pobierz nowe dane od użytkownika
+            nowe_stanowisko = input('Podaj nowe stanowisko pracownika (naciśnij Enter, aby pozostawić bez zmian): ')
+
+            # Zaktualizuj dane wybranego pracownika
+            sql_update_worker = "UPDATE public.pracownicy SET "
+            if nowe_stanowisko:
+                sql_update_worker += f"stanowiskopracy='{nowe_stanowisko}',"
+            sql_update_worker = sql_update_worker.rstrip(',')  # Usuń ostatnią przecinkę
+            sql_update_worker += f" WHERE id={id_pracownika_do_aktualizacji} AND oddzial='{nazwa_oddzialu}';"
+
+            cursor.execute(sql_update_worker)
+            db_params.commit()
+
+            print(f'Zaktualizowano dane pracownika o ID {id_pracownika_do_aktualizacji} w oddziale {nazwa_oddzialu}.')
+    else:
+        print(f"Nie znaleziono oddziału o nazwie {nazwa_oddzialu}.")
+
+    # Zamknij kursor po użyciu
+    cursor.close()
+
+
+
+
+#------Generowanie mapy pracowników wybranego oddziału-------
 def get_map_of_workers_from(db_params, selected_department: str) -> None:
     cursor = db_params.cursor()
 
@@ -374,7 +560,7 @@ def remove_soliders(db_params) -> None:
 
     cursor.close()
 
-#!!!!!!!!!!!!!Funkcja do poprawy!!!!!!!!
+
 def update_soliders(db_params) -> None:
     cursor = db_params.cursor()
     unit = input("Podaj nazwisko żołnierza do modyfikacji:")
@@ -415,7 +601,11 @@ def gui(db_params) -> None:
               f'12: Wygeneruj mapę wszystkich oddziałów\n'
               f'13: Wygeneruj mapę wszystkich pracowników\n'
               f'14: Wygeneruj mapę pracowników z wybranego oddziału\n'
-              f'15: Wyjdź')
+              f'15: Dodaj pracowników do wybranego oddziału\n'
+              f'16: Pokaż użytkowników z wybranego oddziału\n'
+              f'17: Usuń pracowników z wybranego oddziału\n'
+              f'18: Aktualizuj pracowników z wybranego oddziału\n'
+              f'19: Wyjdź')
 
         menu_option = input('Podaj funkcje do wywołania')
         print(f'Wybrane funkcje {menu_option}')
@@ -468,6 +658,18 @@ def gui(db_params) -> None:
                 selected_department = input("Podaj nazwę oddziału: ")
                 get_map_of_workers_from(db_params, selected_department)
             case '15':
+                print('Dodaj użytkowników z wybranego oddziału')
+                add_workers_to_unit(db_params)
+            case '16':
+                print('Pokaż użytkowników z wybranego oddziału')
+                show_workers_in_selected_unit(db_params)
+            case '17':
+                print('Usuń użytkowników z wybranego oddziału')
+                remove_unit_and_workers(db_params)
+            case '18':
+                print('Aktualizuj użytkowników z wybranego oddziału')
+                update_selected_worker_in_unit(db_params)
+            case '19':
                 print('Kończę pracę')
                 break
 
