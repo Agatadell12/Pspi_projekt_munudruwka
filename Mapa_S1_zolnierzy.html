@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5c0327b19fa9e01ec7e29f84d01f9e4c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5c0327b19fa9e01ec7e29f84d01f9e4c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5c0327b19fa9e01ec7e29f84d01f9e4c = L.map(
+                "map_5c0327b19fa9e01ec7e29f84d01f9e4c",
+                {
+                    center: [54.519167, 18.539444],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b4440e942c6ed74b1000021294b6af2f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_b4440e942c6ed74b1000021294b6af2f.addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+            var marker_6fea0eb56e0a5d1dd82145cae702510c = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+        var popup_952de707770c6326f9f14754bddaaee4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_15a2afe26e4795af6f20ba8fc42561f7 = $(`<div id="html_15a2afe26e4795af6f20ba8fc42561f7" style="width: 100.0%; height: 100.0%;">Żołnierz: ppłk Dawid ZAJĄC pracuje w jednostce w miescie Dęblin pobiera sorty w oddziale S1 </div>`)[0];
+                popup_952de707770c6326f9f14754bddaaee4.setContent(html_15a2afe26e4795af6f20ba8fc42561f7);
+            
+        
+
+        marker_6fea0eb56e0a5d1dd82145cae702510c.bindPopup(popup_952de707770c6326f9f14754bddaaee4)
+        ;
+
+        
+    
+    
+            var marker_ecb0a9e15de3872005e220004507cb82 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+        var popup_b021b5521f3a5b3227c57d31131d452a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_56e36dda556459d3dca4b9dadcdb093c = $(`<div id="html_56e36dda556459d3dca4b9dadcdb093c" style="width: 100.0%; height: 100.0%;">Żołnierz: płk Hubert KOŃ pracuje w jednostce w miescie Komorowo pobiera sorty w oddziale S1 </div>`)[0];
+                popup_b021b5521f3a5b3227c57d31131d452a.setContent(html_56e36dda556459d3dca4b9dadcdb093c);
+            
+        
+
+        marker_ecb0a9e15de3872005e220004507cb82.bindPopup(popup_b021b5521f3a5b3227c57d31131d452a)
+        ;
+
+        
+    
+    
+            var marker_3887205e3d5b89333042353524a35989 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+        var popup_ad615daf580565fc4b4c9a1c2ea3552f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_23a74e33cd247edbd5dcbdac02a9636e = $(`<div id="html_23a74e33cd247edbd5dcbdac02a9636e" style="width: 100.0%; height: 100.0%;">Żołnierz: kpr Adrianna ŻMIJA pracuje w jednostce w miescie Komorowo pobiera sorty w oddziale S1 </div>`)[0];
+                popup_ad615daf580565fc4b4c9a1c2ea3552f.setContent(html_23a74e33cd247edbd5dcbdac02a9636e);
+            
+        
+
+        marker_3887205e3d5b89333042353524a35989.bindPopup(popup_ad615daf580565fc4b4c9a1c2ea3552f)
+        ;
+
+        
+    
+    
+            var marker_5cd97230a5841df899016e27d6cce5f1 = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+        var popup_0cdb0f4fc1d8c434a93536b1d054472f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ec7ecb2433ee666951ce42b4fa08eef9 = $(`<div id="html_ec7ecb2433ee666951ce42b4fa08eef9" style="width: 100.0%; height: 100.0%;">Żołnierz: kpr Adam DUSICIEL pracuje w jednostce w miescie Kozienice pobiera sorty w oddziale S1 </div>`)[0];
+                popup_0cdb0f4fc1d8c434a93536b1d054472f.setContent(html_ec7ecb2433ee666951ce42b4fa08eef9);
+            
+        
+
+        marker_5cd97230a5841df899016e27d6cce5f1.bindPopup(popup_0cdb0f4fc1d8c434a93536b1d054472f)
+        ;
+
+        
+    
+    
+            var marker_c66ed4811cd295c742df8fc9a53b603a = L.marker(
+                [0.0, 0.0],
+                {}
+            ).addTo(map_5c0327b19fa9e01ec7e29f84d01f9e4c);
+        
+    
+        var popup_86c8dd0c01079e28ad71cd4816826637 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8baa4ee4529a40e7bf3d61f628b4829c = $(`<div id="html_8baa4ee4529a40e7bf3d61f628b4829c" style="width: 100.0%; height: 100.0%;">Żołnierz: ppłk Agnieszka KACZOR pracuje w jednostce w miescie Warszawa pobiera sorty w oddziale S1 </div>`)[0];
+                popup_86c8dd0c01079e28ad71cd4816826637.setContent(html_8baa4ee4529a40e7bf3d61f628b4829c);
+            
+        
+
+        marker_c66ed4811cd295c742df8fc9a53b603a.bindPopup(popup_86c8dd0c01079e28ad71cd4816826637)
+        ;
+
+        
+    
+</script>
+</html>
