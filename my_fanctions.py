@@ -2,6 +2,7 @@ import psycopg2
 from bs4 import BeautifulSoup
 import requests
 import folium
+import sys
 
 #Logowanie do aplikacjii
 
@@ -12,6 +13,29 @@ db_params = psycopg2.connect(
     host='localhost',
     port=5432
 )
+
+import my_fanctions
+users_database = {"admin": "admin123"}  # Tutaj dodaj inne pary login:hasło
+
+def check_credentials(username, password):
+    """
+    Sprawdza poprawność podanych danych logowania.
+    """
+    return username in users_database and users_database[username] == password
+
+def login():
+    """
+    Prosi użytkownika o podanie danych logowania.
+    """
+    while True:
+        username = input("Podaj login: ")
+        password = input("Podaj hasło: ")
+
+        if check_credentials(username, password):
+            print("Poprawne dane logowania.")
+            return True
+        else:
+            print("Błędne dane logowania. Spróbuj ponownie.")
 
 
 #Funkcje do wyszukiwania,dodawania,aktualizowania,usuwania oddziałów oraz generowanie mapy wszystkich oddziałów
@@ -740,117 +764,199 @@ def update_soliders(db_params) -> None:
 
 #_-_-_-__Generowanie mapy żołnierzy pobierających sorty z wybranego oddziału_-_-_-_-
 
-
-def gui(db_params) -> None:
+def add() -> None:
     while True:
-        print(f'MENU\n'
-              f'0: Wyświetl liste oddziałów zaopatrywania w mundury\n'
-              f'1: Wyświetl liste pracowników\n'
-              f'2: Wyświetl liste żołnierzy którzy pobrali sorty mundurowe\n'
-              f'3: Dodaj do listy oddziałow zaopatrywania w mundury oddział\n'
-              f'4: Dodaj do listy pracownika\n'
-              f'5: Dodaj do listy żołnierza\n'
-              f'6: Usuń z listy odziałów zaopatrywania w mundury oddział\n'
-              f'7: Usuń z listy pracownika\n'
-              f'8: Usuń z listy żołnierza\n'
-              f'9: Aktualizuj listę oddziałów zaopatrywania w mundury\n'
-              f'10: Aktualizuj listę pracowników\n'
-              f'11: Aktualizuj listę żołnierzy\n'
-              f'12: Wygeneruj mapę wszystkich oddziałów\n'
-              f'13: Wygeneruj mapę wszystkich pracowników\n'
-              f'14: Wygeneruj mapę pracowników z wybranego oddziału\n'
-              f'15: Dodaj pracowników do wybranego oddziału\n'
-              f'16: Pokaż użytkowników z wybranego oddziału\n'
-              f'17: Usuń pracowników z wybranego oddziału\n'
-              f'18: Aktualizuj pracowników z wybranego oddziału\n'
-              f'19: Dodaj żołnierza do wybranego oddziału\n'
-              f'20: Wyświetl żołnierzy z wybranego oddziału\n'
-              f'21: Usuń żołnierzy z wybranego oddziału\n'
-              f'22: Zakualizuj żołnierzy z wybranego oddziału\n'
-              f'23: Wygeneruj mapę żołnierzy pobierających sorty z wybranego oddziału z wybranego oddziału\n'
-              f'24: Wyjdź')
+        print(f'Dodawanie użytkowników\n'
+              f'0: Dodaj do listy oddziałow zaopatrywania w mundury oddział\n'
+              f'1: Dodaj do listy pracownika\n'
+              f'2: Dodaj do listy żołnierza\n'
+              f'3: Dodaj pracowników do wybranego oddziału\n'
+              f'4: Dodaj żołnierza do wybranego oddziału\n'
+              f'5: Powrót do okna głównego\n'
+              )
 
         menu_option = input('Podaj funkcje do wywołania')
         print(f'Wybrane funkcje {menu_option}')
 
         match menu_option:
             case '0':
-                print('Oddziały zaopatrujące żołnierzy w mundury')
-                show_unit(db_params)
-            case'1':
-                print('Lista pracowników')
-                show_workers(db_params)
-            case '2':
-                print('Lista żołnierzy którzy pobrali sorty mundurowe')
-                show_soliders(db_params)
-            case '3':
                 print('Dodaj do listy nowy oddział')
                 add_unit()
-            case '4':
+            case '1':
                 print('Dodaj do listy nowego pracownika')
                 add_workers()
-            case '5':
-                print('Dodaj do listy nowego żołnierza')
+            case '2':
+                print('odaj do listy nowego żołnierza')
                 add_solider()
-            case '6':
-                print('Usuń z listy oddział')
-                remove_unit(db_params)
-            case '7':
-                print('Usuń z listy pracownika')
-                remove_workers(db_params)
-            case '8':
-                print('Usuń z listy żołnierza')
-                remove_soliders(db_params)
-            case '9':
-                print('Aktualizuj listę oddziałów zaopatrywania w mundury')
-                update_unit(db_params)
-            case '10':
-                print('Aktualizuj listę pracowników')
-                update_workers(db_params)
-            case '11':
-                print('Aktualizuj listę żołnierzy')
-                update_soliders(db_params)
-            case '12':
-                print('Wygeneruj mapę wszystkich oddziałów')
-                get_map_of(db_params)
-            case '13':
-                print('Wygeneruj mapę wszystkich pracowników')
-                get_map_of_workers(db_params)
-            case '14':
-                print('Wygeneruj mapę wszystkich pracowników z wybranego oddziału')
-                selected_department = input("Podaj nazwę oddziału: ")
-                get_map_of_workers_from(db_params, selected_department)
-            case '15':
-                print('Dodaj użytkowników z wybranego oddziału')
+            case '3':
+                print('Dodaj pracownika do wybranego oddziału')
                 add_workers_to_unit(db_params)
-            case '16':
-                print('Pokaż użytkowników z wybranego oddziału')
-                show_workers_in_selected_unit(db_params)
-            case '17':
-                print('Usuń użytkowników z wybranego oddziału')
-                remove_unit_and_workers(db_params)
-            case '18':
-                print('Aktualizuj użytkowników z wybranego oddziału')
-                update_selected_worker_in_unit(db_params)
-            case '19':
+            case '4':
                 print('Dodaj żołnierza do wybranego oddziału')
                 add_soliders_to_unit(db_params)
-            case '20':
+            case '5':
+                break
+
+def show () -> None:
+    while True:
+        print(f'Wyświetlanie użytkowników\n'
+              f'0: Wyświetl liste oddziałów zaopatrywania w mundury\n'
+              f'1: Wyświetl liste pracowników\n'
+              f'2: Wyświetl liste żołnierzy którzy pobrali sorty mundurowe\n'
+              f'3: Wyświetl pracowników z wybranego oddziału\n'
+              f'4: Wyświetl żołnierzy z wybranego oddziału\n'
+              f'5: Powrót do okna głównego\n'
+              )
+        menu_option = input('Podaj funkcje do wywołania')
+        print(f'Wybrane funkcje {menu_option}')
+
+        match menu_option:
+            case '0':
+                print('Wyświetl liste oddziałów zaopatrywania w mundury')
+                show_unit(db_params)
+            case '1':
+                print('Wyświetl liste pracowników')
+                show_workers(db_params)
+            case '2':
+                print('Wyświetl liste żołnierzy którzy pobrali sorty mundurowe')
+                show_soliders(db_params)
+            case '3':
+                print('Wyświetl pracowników z wybranego oddziału')
+                show_workers_in_selected_unit(db_params)
+            case '4':
                 print('Wyświetl żołnierzy z wybranego oddziału')
                 show_soliders_in_selected_unit(db_params)
-            case '21':
+            case '5':
+                break
+
+def remove() -> None:
+    while True:
+        print(f'Usuwanie użytkowników\n'
+              f'0: Usuń z listy odziałów zaopatrywania w mundury oddział\n'
+              f'1: Usuń z listy pracownika\n'
+              f'2: Usuń z listy żołnierza\n'
+              f'3: Usuń pracowników z wybranego oddziału\n'
+              f'4: Usuń żołnierzy z wybranego oddziału\n'
+              f'5: Powrót do okna głównego\n'
+              )
+        menu_option = input('Podaj funkcje do wywołania')
+        print(f'Wybrane funkcje {menu_option}')
+
+        match menu_option:
+            case '0':
+                print('Usuń z listy odziałów zaopatrywania w mundury oddział')
+                remove_unit(db_params)
+            case '1':
+                print('Usuń z listy pracownika')
+                remove_workers()
+            case '2':
+                print('Usuń z listy żołnierza')
+                remove_soliders(db_params)
+            case '3':
+                print('Usuń pracowników z wybranego oddziału')
+                remove_unit_and_workers(db_params)
+            case '4':
                 print('Usuń żołnierzy z wybranego oddziału')
                 remove_unit_and_soliders(db_params)
-            case '22':
-                print('Zaktualizuj żołnierzy z wybranego oddziału')
+            case '5':
+                break
+
+
+def update () -> None:
+    while True:
+        print(f'Aktualizowanie użytkowników\n'
+              f'0: Aktualizuj listę oddziałów zaopatrywania w mundury\n'
+              f'1: Aktualizuj listę pracowników\n'
+              f'2: Aktualizuj listę żołnierzy\n'
+              f'3: Aktualizuj pracowników z wybranego oddziału\n'
+              f'4: Aktualizuj żołnierzy z wybranego oddziału\n'
+              f'5: Powrót do okna głównego\n'
+              )
+        menu_option = input('Podaj funkcje do wywołania')
+        print(f'Wybrane funkcje {menu_option}')
+
+        match menu_option:
+            case '0':
+                print('Aktualizuj listę oddziałów zaopatrywania w mundury')
+                update_unit(db_params)
+            case '1':
+                print('Aktualizuj listę pracowników')
+                update_workers(db_params)
+            case '2':
+                print('Aktualizuj listę żołnierzy')
+                update_soliders(db_params)
+            case '3':
+                print('Aktualizuj pracowników z wybranego oddziału')
+                update_selected_worker_in_unit(db_params)
+            case '4':
+                print('Aktualizuj żołnierzy z wybranego oddziału')
                 update_selected_solider_in_unit(db_params)
-            case '23':
+            case '5':
+                break
+
+def generate () -> None:
+    while True:
+        print(f'wygeneruj mape\n'
+              f'0: Wygeneruj mapę wszystkich oddziałów\n'
+              f'1: Wygeneruj mapę wszystkich pracowników\n'
+              f'2: Wygeneruj mapę pracowników z wybranego oddziału\n'
+              f'3: Wygeneruj mapę żołnierzy pobierających sorty z wybranego oddziału z wybranego oddziału\n'
+              f'5: Powrót do okna głównego \n'
+              )
+        menu_option = input('Podaj funkcje do wywołania')
+        print(f'Wybrane funkcje {menu_option}')
+
+        match menu_option:
+            case '0':
+                print('Wygeneruj mapę wszystkich oddziałów')
+                get_map_of(db_params)
+            case '1':
+                print('Wygeneruj mapę wszystkich pracowników')
+                get_map_of_workers(db_params)
+            case '2':
+                print('Wygeneruj mapę pracowników z wybranego oddziału')
+                selected_department = input("Podaj nazwę oddziału: ")
+                get_map_of_workers_from(db_params, selected_department)
+            case '3':
                 print('Wygeneruj mapę żołnierzy pobierających sorty z wybranego oddziału z wybranego oddziału')
                 selected_department = input("Podaj nazwę oddziału: ")
                 get_map_of_soliders_from(db_params, selected_department)
-            case '24':
-                print('Kończę pracę')
+            case '4':
                 break
+
+def gui(db_params) -> None:
+    if login():
+        while True:
+            print(f'MENU\n'
+                  f'0: Dodaj do listy:\n'
+                  f'1: Wyświetl liste:\n'
+                  f'2: Usuń z listy:\n'
+                  f'3: Aktualizuj listę:\n'
+                  f'4: Wygeneruj mapę:\n'
+                  f'5: Wyjdź')
+
+            menu_option = input('Podaj funkcje do wywołania')
+            print(f'Wybrane funkcje {menu_option}')
+
+            match menu_option:
+                case '0':
+                    print('Dodaj do listy')
+                    add()
+                case '1':
+                    print('Wyświetl listę')
+                    show()
+                case '2':
+                    print('Usuń z listy')
+                    remove()
+                case '3':
+                    print('Aktualizuj listę')
+                    update()
+                case '4':
+                    print('Wygeneruj mapę')
+                    generate()
+                case '5':
+                    print('Kończę pracę')
+                    sys.exit()
 
 gui(db_params)
 
