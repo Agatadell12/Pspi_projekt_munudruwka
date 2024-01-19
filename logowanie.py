@@ -1,4 +1,5 @@
 import my_fanctions
+
 users_database = {"admin": "admin123"}  # Tutaj dodaj inne pary login:hasło
 
 def check_credentials(username, password):
@@ -20,4 +21,5 @@ def login():
             return True
         else:
             print("Błędne dane logowania. Spróbuj ponownie.")
+
 
